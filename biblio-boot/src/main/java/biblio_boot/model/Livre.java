@@ -12,14 +12,18 @@ public class Livre {
     @Column(nullable = false)
     private String titre;
 
+    @Column(nullable = false)
+    private Integer annee;
+
     @ManyToOne
     @JoinColumn(name="auteur")
     private Auteur auteur;
 
-    @Column(nullable = false)
-    private Integer annee;
+    @ManyToOne
+    @JoinColumn(name="editeur")
+    private Editeur editeur;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="collection")
     private Collection collection;
 
@@ -30,21 +34,23 @@ public class Livre {
     public Livre() {
     }
 
-    public Livre(Integer annee, Auteur auteur, Collection collection, Genre genre, Integer id, String titre) {
+    public Livre(Integer annee, Auteur auteur, Collection collection, Editeur editeur, Genre genre, Integer id, String titre) {
         this.annee = annee;
         this.auteur = auteur;
         this.collection = collection;
+        this.editeur = editeur;
         this.genre = genre;
         this.id = id;
         this.titre = titre;
     }
 
-    public Livre(String titre, Genre genre, Collection collection, Auteur auteur, Integer annee) {
-        this.titre = titre;
-        this.genre = genre;
-        this.collection = collection;
-        this.auteur = auteur;
+    public Livre(Integer annee, Auteur auteur, Collection collection, Editeur editeur, Genre genre, String titre) {
         this.annee = annee;
+        this.auteur = auteur;
+        this.collection = collection;
+        this.editeur = editeur;
+        this.genre = genre;
+        this.titre = titre;
     }
 
     public Integer getAnnee() {
@@ -85,6 +91,14 @@ public class Livre {
 
     public void setTitre(String titre) {
         this.titre = titre;
+    }
+
+    public Editeur getEditeur() {
+        return editeur;
+    }
+
+    public void setEditeur(Editeur editeur) {
+        this.editeur = editeur;
     }
 
     public Genre getGenre() {
