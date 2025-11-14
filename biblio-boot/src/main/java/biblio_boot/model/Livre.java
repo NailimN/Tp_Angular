@@ -13,6 +13,9 @@ public class Livre {
     private String titre;
 
     @Column(nullable = false)
+    private String resume;
+
+    @Column(nullable = false)
     private Integer annee;
 
     @ManyToOne
@@ -34,23 +37,33 @@ public class Livre {
     public Livre() {
     }
 
-    public Livre(Integer annee, Auteur auteur, Collection collection, Editeur editeur, Genre genre, Integer id, String titre) {
+    public Livre(Integer annee, Auteur auteur, Collection collection, Editeur editeur, Genre genre, Integer id, String resume, String titre) {
         this.annee = annee;
         this.auteur = auteur;
         this.collection = collection;
         this.editeur = editeur;
         this.genre = genre;
         this.id = id;
+        this.resume = resume;
         this.titre = titre;
     }
 
-    public Livre(Integer annee, Auteur auteur, Collection collection, Editeur editeur, Genre genre, String titre) {
+    public Livre(Integer annee, Auteur auteur, Collection collection, Editeur editeur, Genre genre, String resume, String titre) {
         this.annee = annee;
         this.auteur = auteur;
         this.collection = collection;
         this.editeur = editeur;
         this.genre = genre;
+        this.resume = resume;
         this.titre = titre;
+    }
+
+    public String getResume() {
+        return resume;
+    }
+
+    public void setResume(String resume) {
+        this.resume = resume;
     }
 
     public Integer getAnnee() {
