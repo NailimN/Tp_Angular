@@ -1,22 +1,53 @@
 package biblio_boot.model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Livre {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(nullable = false)
     private String titre;
+
+    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name="auteur")
     private Auteur auteur;
+
+    @Column(nullable = false)
     private Integer annee;
+
+    @Column(nullable = false)
+    @OneToOne
+    @JoinColumn(name="collection")
     private Collection collection;
+
+    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name="auteur")
+    private Genre genre;
 
     public Livre() {
     }
 
-    public Livre(Integer annee, Auteur auteur, Collection collection, Integer id, String titre) {
+    public Livre(Integer annee, Auteur auteur, Collection collection, Genre genre, Integer id, String titre) {
         this.annee = annee;
         this.auteur = auteur;
         this.collection = collection;
+        this.genre = genre;
         this.id = id;
         this.titre = titre;
+    }
+
+    public Livre(String titre, Genre genre, Collection collection, Auteur auteur, Integer annee) {
+        this.titre = titre;
+        this.genre = genre;
+        this.collection = collection;
+        this.auteur = auteur;
+        this.annee = annee;
     }
 
     public Integer getAnnee() {
@@ -59,6 +90,14 @@ public class Livre {
         this.titre = titre;
     }
 
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
     @Override
     public String toString() {
         return "Livre{" +
@@ -67,6 +106,7 @@ public class Livre {
                 ", titre='" + titre + '\'' +
                 ", auteur=" + auteur +
                 ", collection=" + collection +
+                ", genre=" + genre +
                 '}';
     }
 }
