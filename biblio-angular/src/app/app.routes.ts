@@ -18,5 +18,6 @@ export const routes: Routes = [
     {path: 'genre', component: GenrePage, canActivate: [authGuard]},
     {path: 'editeur', component: EditeurPage, canActivate: [authGuard]},
     {path: 'collection', component: CollectionPage, canActivate: [authGuard]},
-    {path: 'auteur', component: AuteurPage, canActivate: [authGuard]}
+    {path: 'auteur', component: AuteurPage, canActivate: [authGuard]},
+    // {path: 'auteur/{:id}', component: AuteurPage, canActivate: [authGuard]}
 ];

@@ -32,4 +32,12 @@ export class EditeurDto {
             pays: this.pays
         };
     }
+
+    public toJsonWithId(): any {
+        return {
+            id: this.id,
+            nom: this.nom,
+            pays: this.pays
+        };
+    }
 }
