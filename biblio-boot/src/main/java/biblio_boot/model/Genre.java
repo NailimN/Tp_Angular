@@ -17,6 +17,11 @@ public class Genre {
         this.libelle = libelle;
     }
 
+    public Genre(Integer id, String libelle) {
+        this.id = id;
+        this.libelle = libelle;
+    }
+
     public Genre() {
     }
 
