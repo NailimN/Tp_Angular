@@ -35,15 +35,23 @@ export class AuteurDto {
 		this._nationalite = value;
 	} 
 
-   public toJson(): any {
+   public toJsonWithId(): any {
         return {
             id: this.id,
            nom: this.nom,
            prenom: this.prenom,
-           netionalite: this.nationalite,
+           nationalite: this.nationalite,
         };
     }
 
+   public toJson(): any {
+        return {
+          
+           nom: this.nom,
+           prenom: this.prenom,
+           nationalite: this.nationalite,
+        };
+    }
 
 }
 
