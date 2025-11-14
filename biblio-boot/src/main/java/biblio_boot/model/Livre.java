@@ -7,17 +7,21 @@ public class Livre {
     private Auteur auteur;
     private Integer annee;
     private Collection collection;
+    private Genre genre;
 
     public Livre() {
     }
 
-    public Livre(Integer annee, Auteur auteur, Collection collection, Integer id, String titre) {
+    public Livre(Integer annee, Auteur auteur, Collection collection, Genre genre, Integer id, String titre) {
         this.annee = annee;
         this.auteur = auteur;
         this.collection = collection;
+        this.genre = genre;
         this.id = id;
         this.titre = titre;
     }
+
+
 
     public Integer getAnnee() {
         return annee;
@@ -59,6 +63,14 @@ public class Livre {
         this.titre = titre;
     }
 
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
     @Override
     public String toString() {
         return "Livre{" +
@@ -67,6 +79,7 @@ public class Livre {
                 ", titre='" + titre + '\'' +
                 ", auteur=" + auteur +
                 ", collection=" + collection +
+                ", genre=" + genre +
                 '}';
     }
 }
