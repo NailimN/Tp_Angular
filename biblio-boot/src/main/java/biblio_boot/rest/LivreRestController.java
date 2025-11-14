@@ -28,12 +28,12 @@ public class LivreRestController {
     @PostMapping
     public Livre addLivre(@RequestBody Livre livre){ return livreService.create(livre);}
 
-    @PutMapping
+    @PutMapping("/{id}")
     public Livre updateLivre(@PathVariable Integer id, @RequestBody Livre livre){
         livre.setId(id);
         return (Livre)livreService.update(livre);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void deleteLivre(@PathVariable Integer id){ livreService.delete(id);}
 }

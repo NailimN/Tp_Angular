@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+src/main/java/biblio_boot/config/DataInitRunner.java
+src/main/java/biblio_boot/service/DataInitService.java
+

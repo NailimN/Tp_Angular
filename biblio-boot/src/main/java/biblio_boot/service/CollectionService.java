@@ -3,6 +3,7 @@ package biblio_boot.service;
 import java.util.List;
 import java.util.Optional;
 
+import biblio_boot.model.Genre;
 import org.springframework.stereotype.Service;
 
 import biblio_boot.dao.IDAOCollection;
@@ -19,6 +20,11 @@ public class CollectionService {
 
     public List<Collection> findAll() {
         return dao.findAll();
+    }
+
+    public Collection create(Collection collection)
+    {
+        return dao.save(collection);
     }
 
     public Optional<Collection> findById(Long id) {
