@@ -9,6 +9,7 @@ import biblio_boot.service.CollectionService;
 
 @RestController
 @RequestMapping("/api/collections")
+@CrossOrigin("*")
 public class CollectionRestController {
 
     private final CollectionService service;
