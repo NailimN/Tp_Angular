@@ -7,7 +7,7 @@ import { AuteurService } from '../../../service/auteur-service';
 
 @Component({
   selector: 'app-auteur-page',
-  imports: [CommonModule, RouterLink, RouterOutlet],
+  imports: [CommonModule, RouterLink],
   templateUrl: './auteur-page.html',
   styleUrl: './auteur-page.css',
 })

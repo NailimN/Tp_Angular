@@ -7,16 +7,19 @@
 <th>nom</th>
 <th>prenom</th>
 <th>nationalite</th>
+<th>Actions</th>
 </tr>
 </thead>
 
 <tbody>
+
 <tr *ngFor="let auteur of auteurs$ | async; trackBy: trackAuteur">
   <td>
-    <a [routerLink]="['/auteur', auteur.id]">
-      {{ auteur.nom }} {{ auteur.prenom }}
+    <a [routerLink]="['/auteur', auteur.id]"> {{ auteur.nom }} 
     </a>
   </td>
+
+  <td>{{ auteur.prenom }}</td>
   <td>{{ auteur.nationalite }}</td>
 
   <td>
