@@ -1,11 +1,14 @@
 import { AuteurDto } from "./auteur-dto";
 import { CollectionDto } from "./collection-dto";
+import { EditeurDto } from "./editeur-dto";
 import { GenreDto } from "./genre-dto";
 
 export class LivreDto {
     private _id!: number;
     private _titre!: string;
     private _annee!: number;
+    private _resume!: string;
+    private _editeur!: EditeurDto
     private _collection!: CollectionDto;
     private _genre!: GenreDto;
     private _auteur!: AuteurDto;
@@ -33,6 +36,24 @@ export class LivreDto {
     public set annee(value: number) {
         this._annee = value;
     }
+    
+     public get resume(): string {
+        return this._resume;
+    }   
+
+    public set resume(value: string) {
+        this._resume = value;
+    } 
+
+     public get editeur(): EditeurDto{
+        return this._editeur;
+    }   
+
+    public set editeur(value: EditeurDto) {
+        this._editeur = value;
+    } 
+
+
     public get collection(): CollectionDto {
         return this._collection;
     }
@@ -54,4 +75,15 @@ export class LivreDto {
         this._auteur = value;
     }
 
+    // public toJson(): any {
+    //     return {
+    //         titre: this.titre,
+    //         annee: this.annee,
+    //         resume: this.resume,
+    //         editeur: this.editeur.toJsonWithId(),
+    //         collection: this.collection.toJsonWithId(),
+    //         genre: this.genre.toJsonWithId(),
+    //         auteur: this.auteur.toJsonWithId()
+    //     };
+    // }   
 }
