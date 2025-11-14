@@ -1,12 +1,33 @@
 package biblio_boot.model;
 
+import jakarta.persistence.*;
+
+@Entity
 public class Livre {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Column(nullable = false)
     private String titre;
+
+    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name="auteur")
     private Auteur auteur;
+
+    @Column(nullable = false)
     private Integer annee;
+
+    @Column(nullable = false)
+    @OneToOne
+    @JoinColumn(name="collection")
     private Collection collection;
+
+    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name="auteur")
     private Genre genre;
 
     public Livre() {
