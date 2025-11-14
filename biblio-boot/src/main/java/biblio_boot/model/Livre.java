@@ -12,7 +12,6 @@ public class Livre {
     @Column(nullable = false)
     private String titre;
 
-    @Column(nullable = false)
     @ManyToOne
     @JoinColumn(name="auteur")
     private Auteur auteur;
@@ -20,14 +19,12 @@ public class Livre {
     @Column(nullable = false)
     private Integer annee;
 
-    @Column(nullable = false)
     @OneToOne
     @JoinColumn(name="collection")
     private Collection collection;
 
-    @Column(nullable = false)
     @ManyToOne
-    @JoinColumn(name="auteur")
+    @JoinColumn(name="genre")
     private Genre genre;
 
     public Livre() {
