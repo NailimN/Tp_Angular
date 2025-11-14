@@ -1,1 +1,50 @@
 <p>livre-page works!</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Titre</th>
+            <th>Resumé</th>
+            <th>Année de publication</th>
+            <th>Nom auteur</th>
+            <th>Genre</th>
+            <th>Editeur</th>
+            <th>Collection</th>
+            <th>Actions possibles</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let livre of livres$ | async; trackBy: trackLivre">
+            <td>
+                <a [routerLink]="[ '/livre', livre.id ]">{{ livre.titre }}</a>
+            </td>
+            
+            <td>
+                <p>{{ livre.resume }}</p>
+            </td>
+            <td>
+                <p>{{ livre.auteur.nom }} {{ livre.auteur.prenom }}</p>
+            </td>
+            <td>
+                <p>{{ livre.auteur }}</p>
+            </td>
+            <td>
+                <p>{{ livre.genre }}</p>
+            </td>
+            <td>
+                <p>{{ livre.editeur.nom }}</p>
+            </td>
+            <td>
+                <p>{{ livre.collection }}</p>
+            </td>
+            <td>
+                <button>Modifier</button>
+                <button (click)="deleteById(livre.id)">Supprimer</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<button [routerLink]="['/livre/add']">Ajouter une matière</button>
+
