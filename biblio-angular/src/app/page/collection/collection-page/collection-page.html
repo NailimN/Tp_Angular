@@ -1,1 +1,36 @@
-<p>collection-page works!</p>
+<h1>Liste des collections</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let collection of collections$ | async; trackBy: trackCollection">
+            <td>
+                <a [routerLink]="[ '/collection', collection.id ]">
+                    {{ collection.nom }}
+                </a>
+            </td>
+
+            <td>
+                <button (click)="editCollection(e)">Modifier</button>
+                <button (click)="deleteCollection(e)">Supprimer</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div>
+  <input type="text" [(ngModel)]="collection.nom">
+
+  @if (collection.id) {
+    <button (click)="modifierCollection()">Modifier</button>
+  }
+
+  @else {
+    <button (click)="ajouterCollection()">Ajouter</button>
+  }
+</div>
