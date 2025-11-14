@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/genre")
+@CrossOrigin("*")
 public class GenreRestController {
 
     @Autowired

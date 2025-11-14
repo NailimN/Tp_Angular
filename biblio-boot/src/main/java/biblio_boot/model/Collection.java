@@ -7,7 +7,7 @@ public class Collection {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
 
     private String nom;
 
@@ -16,12 +16,17 @@ public class Collection {
     public Collection(String nom) {
         this.nom = nom;
     }
+    
+    public Collection(Integer id, String nom) {
+        this.id = id;
+    	this.nom = nom;
+    }
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

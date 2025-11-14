@@ -2,45 +2,60 @@ package biblio_boot.rest;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import biblio_boot.model.Collection;
 import biblio_boot.service.CollectionService;
 
 @RestController
 @RequestMapping("/api/collections")
+@CrossOrigin("*")
 public class CollectionRestController {
 
-    private final CollectionService service;
+	@Autowired
+	CollectionService collectionSrv;
 
-    public CollectionRestController(CollectionService service) {
-        this.service = service;
-    }
 
-    @GetMapping
-    public List<Collection> getAll() {
-        return service.findAll();
-    }
+	@GetMapping
+	public List<Collection> allCollections()
+	{
+		return collectionSrv.getAll();
+	}
 
-    @GetMapping("/{id}")
-    public Collection getById(@PathVariable Long id) {
-        return service.findById(id).orElse(null);
-    }
 
-    @PostMapping
-    public Collection create(@RequestBody Collection collection) {
-        return service.save(collection);
-    }
+	@GetMapping("/{id}")
+	public Collection ficheCollection(@PathVariable Integer id, Collection collection) {
+		return collectionSrv.getById(id);
+	}
 
-    @PutMapping("/{id}")
-    public Collection update(@PathVariable Long id, @RequestBody Collection collection) {
-        collection.setId(id);
-        return service.save(collection);
-    }
 
-    @DeleteMapping("/{id}")
-    public void delete(@PathVariable Long id) {
-        service.delete(id);
-    }
+	@PostMapping
+	public Collection ajoutCollection(@RequestBody Collection collection)
+	{
+		return collectionSrv.create(collection);
+	}
+
+
+	@PutMapping("/{id}")
+	public Collection modifierCollection(@PathVariable Integer id,@RequestBody Collection collection)
+	{
+		collection.setId(id);
+		return (Collection) collectionSrv.update(collection);
+	}
+
+
+	@DeleteMapping("/{id}")
+	public void supprimerCollection(@PathVariable Integer id) {
+		collectionSrv.deleteById(id);
+	}
 }
 
