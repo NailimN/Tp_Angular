@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { startWith, Subject, switchMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { LivreDto } from './dto/livre-dto';
+import { LivreDto } from '../dto/livre-dto';
 
 @Injectable({
   providedIn: 'root',
@@ -46,8 +46,8 @@ export class LivreService {
 
   }
 
-  public deleteById(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  public deleteById(id: number): void {
+     this.http.delete<void>(`${this.apiUrl}/${id}`).subscribe(() => this.refresh());;
   }
 
 }
