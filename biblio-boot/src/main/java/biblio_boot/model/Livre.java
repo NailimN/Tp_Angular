@@ -42,7 +42,13 @@ public class Livre {
         this.titre = titre;
     }
 
-
+    public Livre(String titre, Genre genre, Collection collection, Auteur auteur, Integer annee) {
+        this.titre = titre;
+        this.genre = genre;
+        this.collection = collection;
+        this.auteur = auteur;
+        this.annee = annee;
+    }
 
     public Integer getAnnee() {
         return annee;
