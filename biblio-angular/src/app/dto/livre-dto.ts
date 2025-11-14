@@ -75,15 +75,15 @@ export class LivreDto {
         this._auteur = value;
     }
 
-    // public toJson(): any {
-    //     return {
-    //         titre: this.titre,
-    //         annee: this.annee,
-    //         resume: this.resume,
-    //         editeur: this.editeur.toJsonWithId(),
-    //         collection: this.collection.toJsonWithId(),
-    //         genre: this.genre.toJsonWithId(),
-    //         auteur: this.auteur.toJsonWithId()
-    //     };
-    // }   
+    public toJson(): any {
+        return {
+            titre: this.titre,
+            annee: this.annee,
+             resume: this.resume,
+             editeur: this.editeur.toJsonWithId(),
+             collection: this.collection.toJsonWithId(),
+             genre: this.genre.toJsonWithId(),
+            auteur: this.auteur.toJsonWithId()
+        };
+    }   
 }
