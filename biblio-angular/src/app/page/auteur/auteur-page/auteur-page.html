@@ -1,1 +1,31 @@
 <p>auteur-page works!</p>
+
+<table>
+
+<thead>
+<tr>
+<th>nom</th>
+<th>prenom</th>
+<th>nationalite</th>
+</tr>
+</thead>
+
+<tbody>
+<tr *ngFor="let auteur of auteurs$ | async; trackBy: trackAuteur">
+  <td>
+    <a [routerLink]="['/auteur', auteur.id]">
+      {{ auteur.nom }} {{ auteur.prenom }}
+    </a>
+  </td>
+  <td>{{ auteur.nationalite }}</td>
+
+  <td>
+    <button>Modifier</button>
+    <button>Supprimer</button>
+  </td>
+</tr>
+
+</tbody>
+
+
+</table>
