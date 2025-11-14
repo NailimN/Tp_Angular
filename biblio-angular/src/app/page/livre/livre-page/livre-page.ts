@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LivreDto } from '../../../dto/livre-dto';
-import { LivreService } from '../../../livre-service';
+import { LivreService } from '../../../service/livre-service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -26,5 +26,9 @@ export class LivrePage {
 
   public deleteById(id: number): void {
     this.livreService.deleteById(id);
+  }
+
+   public updateById(id: number): void {
+    
   }
 }

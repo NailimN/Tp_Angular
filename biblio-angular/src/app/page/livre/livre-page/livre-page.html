@@ -6,7 +6,7 @@
             <th>Titre</th>
             <th>Resumé</th>
             <th>Année de publication</th>
-            <th>Nom auteur</th>
+            <th>Auteur</th>
             <th>Genre</th>
             <th>Editeur</th>
             <th>Collection</th>
@@ -14,32 +14,31 @@
         </tr>
     </thead>
 
-    <tbody>
+    <tbody >
         <tr *ngFor="let livre of livres$ | async; trackBy: trackLivre">
             <td>
                 <a [routerLink]="[ '/livre', livre.id ]">{{ livre.titre }}</a>
             </td>
-            
             <td>
                 <p>{{ livre.resume }}</p>
+            </td>
+            <td>
+                <p>{{ livre.annee }}</p>
             </td>
             <td>
                 <p>{{ livre.auteur.nom }} {{ livre.auteur.prenom }}</p>
             </td>
             <td>
-                <p>{{ livre.auteur }}</p>
-            </td>
-            <td>
-                <p>{{ livre.genre }}</p>
+                <p>{{ livre.genre.libelle }}</p>
             </td>
             <td>
                 <p>{{ livre.editeur.nom }}</p>
             </td>
             <td>
-                <p>{{ livre.collection }}</p>
+                <p>{{ livre.collection.nom }}</p>
             </td>
             <td>
-                <button>Modifier</button>
+                <button (click)="updateById(livre.id)">Modifier</button>
                 <button (click)="deleteById(livre.id)">Supprimer</button>
             </td>
         </tr>
