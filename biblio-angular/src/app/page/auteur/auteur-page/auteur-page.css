@@ -1,0 +1,128 @@
+
+body {
+
+    height: auto;
+    background: radial-gradient( circle farthest-corner at 10% 20%,  rgb(10, 122, 60) 0%, rgb(7, 65, 66) 90% ) no-repeat fixed;
+	font-family: "Elms Sans", sans-serif;
+	font-weight: 100;
+}
+
+div{
+
+  display: grid;      
+  grid-template-columns: 20% 60% 20%;
+  grid-template-rows: 10% 80% 10%;
+  height: auto;
+
+}
+
+table {
+	width: 100%;
+    height: fit-content;
+	border-collapse: collapse;
+	overflow: hidden;
+	box-shadow: 0 0 20px rgba(0,0,0,0.1);
+ grid-column: 2 / 3;    
+  grid-row: 2 / 3;   
+  border-radius: 16px;
+
+}
+
+th,
+td {
+	padding: 15px;
+	background-color: rgba(255, 255, 255, 0.178);
+	color: #fff;
+}
+
+th {
+	text-align: left;
+}
+
+thead th {
+
+		background-color: rgb(5, 43, 44);
+	
+}
+
+tbody tr {
+
+
+background-color: rgba(255,255,255,0.3);
+font-weight: 300;
+}
+tbody td {
+		position: relative;
+		
+	}
+
+tr:nth-child(even) {
+  background: #ffffff64;
+
+
+}
+
+
+button:first-of-type{
+ 
+background-color: rgb(7, 65, 66);
+color: #F2F7F3;
+border : 1.5px solid rgb(7, 65, 66);
+
+
+
+
+}
+
+
+button:last-of-type{
+
+
+    background-color: #c90808;
+    color: #EBFCF5;
+    border : 1.5px solid #c90808;
+
+}
+
+
+button{
+
+
+
+border-radius: 10px;
+padding: 8px 16px;
+width: 100px;
+height: fit-content;
+
+
+}
+
+button:first-of-type:hover{
+ 
+border : 1.5px solid rgb(7, 65, 66);
+background-color: rgba(7, 65, 66, 0.466);
+color:  rgb(255, 255, 255);
+
+
+
+
+
+
+}
+
+
+button:last-of-type:hover{
+
+border : 1.5px solid #c90808;
+    background-color: #c9080882;
+    color:  #ffffff;
+ 
+}
+
+h1, h3{
+
+color: #EBFCF5;
+text-align: center;
+
+}
+
