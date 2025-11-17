@@ -12,7 +12,7 @@ import { EditeurDetailPage } from './page/editeur/editeur-detail-page/editeur-de
 import { AuteurDetail } from './page/auteur/auteur-detail/auteur-detail';
 
 export const routes: Routes = [
-    {path: '', component: HomePage},
+    {path: '', component: HomePage, canActivate: [authGuard]},
     {path: 'home', component: HomePage, canActivate: [authGuard]},
     {path: 'login', component: LoginPage},
     {path: 'livre', component: LivrePage, canActivate: [authGuard]},

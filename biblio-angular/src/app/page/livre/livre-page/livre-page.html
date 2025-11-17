@@ -54,29 +54,29 @@
         <div>
             <label for="titre">Titre</label>
             <br>
-            <input id="titre" type="text" formControlName="titre" />
+            <input id="titre" type="text" formControlName="titre" placeholder="Obligatoire" />
 
-            @if (titreCtrl.hasError('required')) {
+            <!--@if (titreCtrl.hasError('required')) {
             <span>Obligatoire</span>
-            }
+            }-->
         </div>
         <div>
-            <label for="resume">Résumé</label>
+            <label for="resume" placeholder="Obligatoire">Résumé</label>
             <br>
-            <input id="resume" type="text" formControlName="resume" />
+            <input id="resume" type="text" formControlName="resume" placeholder="Obligatoire"/>
 
-            @if (resumeCtrl.hasError('required')) {
+            <!--@if (resumeCtrl.hasError('required')) {
             <span>Obligatoire</span>
-            }
+            }-->
         </div>
         <div>
-            <label for="annee">Année de publication</label>
+            <label for="annee" placeholder="Obligatoire">Année de publication</label>
             <br>
-            <input id="annee" type="number" formControlName="annee" />
+            <input id="annee" type="number" formControlName="annee" placeholder="Obligatoire"/>
 
-            @if (anneeCtrl.hasError('required')) {
+            <!--@if (anneeCtrl.hasError('required')) {
             <span>Obligatoire</span>
-            }
+            }-->
         </div>
         <div>
             <label for="auteur">Auteur</label>
@@ -86,7 +86,7 @@
                 </option>
             </select>
             @if (auteurCtrl.hasError('required')) {
-            <span>Obligatoire</span>
+            <span>*</span>
             }
         </div>
         <div>
@@ -96,7 +96,7 @@
                 <option *ngFor="let genre of genres$ | async" [ngValue]="genre.id">{{ genre.libelle }}</option>
             </select>
             @if (genreCtrl.hasError('required')) {
-            <span>Obligatoire</span>
+            <span>*</span>
             }
         </div>
         <div>
@@ -106,7 +106,7 @@
                 <option *ngFor="let editeur of editeurs$ | async" [ngValue]="editeur.id">{{ editeur.nom }}</option>
             </select>
             @if (editeurCtrl.hasError('required')) {
-            <span>Obligatoire</span>
+            <span>*</span>
             }
         </div>
         <div>
@@ -117,7 +117,7 @@
                 </option>
             </select>
             @if (collectionCtrl.hasError('required')) {
-            <span>Obligatoire</span>
+            <span>*</span>
             }
         </div>
 

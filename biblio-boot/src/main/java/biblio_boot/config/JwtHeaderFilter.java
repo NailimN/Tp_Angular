@@ -17,6 +17,7 @@ import javax.crypto.SecretKey;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class JwtHeaderFilter extends OncePerRequestFilter {
@@ -30,25 +31,23 @@ public class JwtHeaderFilter extends OncePerRequestFilter {
         if (header != null) {
             String token = header.substring(7); // On enlève "Bearer " pour garder que le jeton
 
+
+
             // On vérifie le jeton, et si tout est OK, on récupère l'utilisateur associé à ce jeton
-            String username = Jwts.parser()
-                    .verifyWith(secretKey) // On donne la clé pour valider le jeton
-                    .build()
-                    .parseSignedClaims(token) // On donne le jeton à valider
-                    .getPayload() // Le contenu du jeton
-                    .getSubject() // Le nom d'utilisateur
-                    ;
+            Optional<String> optUsername = JwtUtils.validateAndGetSubjet(token);
 
-            // On refabrique une liste de rôles pour l'utilisateur
-            List<GrantedAuthority> autorities = new ArrayList<>();
+            if (optUsername.isPresent()) {
+                // On refabrique une liste de rôles pour l'utilisateur
+                List<GrantedAuthority> autorities = new ArrayList<>();
 
-            autorities.add(new SimpleGrantedAuthority("ROLE_USER"));
+                autorities.add(new SimpleGrantedAuthority("ROLE_USER"));
 
-            // Créer, pour Spring Security, un nouvel User, avec le nom d'utilisateur, pas de mdp, et la liste des autorités
-            UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username, null, autorities);
+                // Créer, pour Spring Security, un nouvel User, avec le nom d'utilisateur, pas de mdp, et la liste des autorités
+                UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(optUsername.get(), null, autorities);
 
-            // Injecter notre nouvel authentication dans le contexte de Spring Security
-            SecurityContextHolder.getContext().setAuthentication(auth);
+                // Injecter notre nouvel authentication dans le contexte de Spring Security
+                SecurityContextHolder.getContext().setAuthentication(auth);
+            }
         }
 
         // Important pour chainer sur le filtre suivant
