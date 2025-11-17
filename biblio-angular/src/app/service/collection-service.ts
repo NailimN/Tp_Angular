@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, startWith, Subject, switchMap } from 'rxjs';
-import { CollectionDto } from '../../../dto/collection-dto';
+import { CollectionDto } from '../dto/collection-dto';
 
 @Injectable({
   providedIn: 'root',
