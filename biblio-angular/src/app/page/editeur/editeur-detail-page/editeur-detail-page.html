@@ -1,0 +1,14 @@
+@if (editeur) {
+    <h1>Éditeur #{{ editeur.id }}</h1>
+    <div>
+        {{ editeur.nom }}
+    </div>
+
+    <div>
+        {{ editeur.pays }}
+    </div>
+}
+
+@else {
+    <h1>Éditeur inconnu</h1>
+}

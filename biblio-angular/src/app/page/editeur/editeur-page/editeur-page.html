@@ -1,29 +1,31 @@
 <h1>Liste des éditeurs</h1>
 
-<table>
-    <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Pays</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
+<div id="grille">
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Pays</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
 
-    <tbody>
-        <tr *ngFor="let e of editeurs$ | async; trackBy: trackEditeur">
-            <td>
-                <a [routerLink]="[ '/editeur', e.id ]">{{ e.nom }}</a>
-            </td>
+        <tbody>
+            <tr *ngFor="let e of editeurs$ | async; trackBy: trackEditeur">
+                <td>
+                    <a [routerLink]="[ '/editeur', e.id ]">{{ e.nom }}</a>
+                </td>
 
-            <td>{{ e.pays }}</td>
+                <td>{{ e.pays }}</td>
 
-            <td>
-                <button (click)="editEditeur(e)">Modifier</button>
-                <button (click)="deleteEditeur(e)">Supprimer</button>
-            </td>
-        </tr>
-    </tbody>
-</table>
+                <td>
+                    <button (click)="editEditeur(e)">Modifier</button>
+                    <button (click)="deleteEditeur(e)">Supprimer</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
 <div>
   <input type="text" [(ngModel)]="editeur.nom">
