@@ -1,0 +1,105 @@
+/* Conteneur global */
+.app-navbar {
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Layout interne */
+.nav-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo */
+.nav-logo span {
+  color: #EBFCF5;
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* Liens */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 22px;
+  transition: 0.3s ease;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: #EBFCF5;
+  font-weight: 300;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: 0.25s ease;
+}
+
+/* hover classique */
+.nav-links li a:hover {
+  background-color: rgba(7, 65, 66, 0.4);
+  color: #fff;
+}
+
+/* lien actif Angular */
+.active-link {
+  background-color: rgb(7, 65, 66);
+  color: #fff !important;
+}
+
+/* ───── MENU MOBILE ───── */
+
+/* bouton hamburger */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  width: 26px;
+  height: 3px;
+  background: #EBFCF5;
+  border-radius: 4px;
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 64px;
+    right: 0;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(8px);
+    width: 220px;
+    padding: 20px;
+    border-radius: 0 0 0 12px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .nav-links.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links li {
+    padding: 6px 0;
+  }
+}

@@ -1,30 +1,12 @@
-<h1>Liste des Genres</h1>>
+<h1>Liste des Genres</h1>
 
-<form (ngSubmit)="creerOuModifier()" [formGroup]="genreForm">
-    <div>
-        <input type="text" formControlName="label" />
 
-        @if (libelleCtrl.hasError('required')) {
-            <span>Le libellé est obligatoire</span>
-        }
-    </div>
-
-    @if (editingGenre) {
-        <input type="submit" [disabled]="genreForm.invalid" value="Modifier" />
-    }
-
-    @else {
-        <input type="submit" [disabled]="genreForm.invalid" value="Créer" />
-    }
-</form>
-
-<hr />
-
+<div id="grille">
 <table>
     <thead>
         <tr>
             <th>Libellé</th>
-            <th></th>
+            <th>Actions</th>
         </tr>
     </thead>
 
@@ -41,3 +23,25 @@
         </tr>
     </tbody>
 </table>
+</div>
+
+<div>
+    <form (ngSubmit)="creerOuModifier()" [formGroup]="genreForm">
+        <div>
+            <input type="text" formControlName="libelle" />
+
+            @if (libelleCtrl.hasError('required')) {
+                <span>Le libellé est obligatoire</span>
+            }
+        </div>
+
+        @if (editingGenre) {
+            <input type="submit" [disabled]="genreForm.invalid" value="Modifier" />
+        }
+
+        @else {
+            <input type="submit" [disabled]="genreForm.invalid" value="Créer" />
+        }
+    </form>
+</div>
+
