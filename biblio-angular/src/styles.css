@@ -11,7 +11,7 @@
 
   display: grid;      
   grid-template-columns: 20% 60% 20%;
-  grid-template-rows: 10% 80% 10%;
+  grid-template-rows:auto;
   height: auto;
 
 }
@@ -126,3 +126,65 @@ text-align: center;
 
 }
 
+.ajout { 
+
+ grid-column: 2 / 3;  
+  grid-row: 3 / 4;  
+display: flex;
+align-items: center;
+flex-direction: column;
+height: fit-content;
+margin: 10px ;
+
+
+}
+
+input{
+
+height: 24px;
+width: 200px;
+margin: 8px 8px;
+padding: 0px 4px;
+border: none;
+border-radius: 8px;
+background-color: #EBFCF5;
+
+}
+
+input:focus-visible{
+
+
+
+  background-color: #ffffff;
+  color: #0c3625;
+  font-weight: 600;
+  outline: none; 
+}
+
+button.btnmodif{
+
+  margin: 8px 8px;
+  background-color: #88c2aa;
+  color: #0c3625;
+  border: none;
+  font-weight: 600;
+
+}
+
+button.btnmodif:hover{
+
+  margin: 8px 8px;
+  background-color: #0c3625;
+color: #b5d8c9;
+
+  border: none;
+  font-weight: 600;
+
+}
+
+form{
+
+display: flex;
+flex-direction: column;
+align-items: end;
+}

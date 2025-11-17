@@ -37,21 +37,28 @@
 </table>
 
 <div class="ajout">
+    <form (ngSubmit)="ajoutermodifierAuteur()" [formGroup]="auteurForm">
 
+<div>
+  <input  type="text" formControlName="nom" placeholder="Nom obligatoire"/> 
+  
+  @if (nameCtrl.hasError('required')) {
+  <span></span>
+            }
+        </div>
 
-  <input type="text" [(ngModel)]="auteur.nom">
-  <input type="text" [(ngModel)]="auteur.prenom">
-  <input type="text" [(ngModel)]="auteur.nationalite">
+  <input type="text" formControlName="prenom" placeholder="Prenom">
+  <input type="text" formControlName="nationalite"  placeholder="Nationalite">
 
-  @if (auteur.id) {
-    <button class="btnmodif" (click)="modifierAuteur()">Modifier</button>
+  @if (editingAuteur) {
+    <button  class="btnmodif"  (click)="ajoutermodifierAuteur()">Modifier</button>
   }
 
   @else {
-    <button class="btnmodif" (click)="ajouterAuteur()">Ajouter</button>
+    <button class="btnmodif" (click)="ajoutermodifierAuteur()">Ajouter</button>
   }
 
-
+    </form>
 </div>
 
 

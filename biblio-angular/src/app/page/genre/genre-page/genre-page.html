@@ -23,9 +23,9 @@
         </tr>
     </tbody>
 </table>
-</div>
 
-<div>
+
+<div class="ajout">
     <form (ngSubmit)="creerOuModifier()" [formGroup]="genreForm">
         <div>
             <input type="text" formControlName="libelle" />
@@ -36,12 +36,14 @@
         </div>
 
         @if (editingGenre) {
-            <input type="submit" [disabled]="genreForm.invalid" value="Modifier" />
+            <input type="submit" class="btnmodif" [disabled]="genreForm.invalid" value="Modifier" />
         }
 
         @else {
-            <input type="submit" [disabled]="genreForm.invalid" value="Créer" />
+            <input type="submit" class="btnmodif" [disabled]="genreForm.invalid" value="Créer" />
         }
     </form>
+</div>
+
 </div>
 
