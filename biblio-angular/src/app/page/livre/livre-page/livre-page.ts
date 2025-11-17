@@ -67,22 +67,65 @@ export class LivrePage {
   }
 
   public creerOuModifier() {
-    if (this.editingLivre) {
-      this.livreService.save(new LivreDto(this.editingLivre.id, this.titreCtrl.value, this.resumeCtrl.value, this.anneeCtrl.value, this.auteurCtrl.value, this.genreCtrl.value, this.editeurCtrl.value, this.collectionCtrl.value));
-    }
-
-    else {
-      this.livreService.save(new LivreDto(0, this.titreCtrl.value, this.resumeCtrl.value, this.anneeCtrl.value, this.auteurCtrl.value, this.genreCtrl.value, this.editeurCtrl.value, this.collectionCtrl.value));
-    }
-
-    this.editingLivre = null;
-    this.titreCtrl.setValue("");
-    this.resumeCtrl.setValue("");
-    this.anneeCtrl.setValue("");
-    this.auteurCtrl.setValue("");
-    this.genreCtrl.setValue("");
-    this.editeurCtrl.setValue("");
-    this.collectionCtrl.setValue("");
+    console.log(this.auteurCtrl.value);
+    
+    const editeurId = this.editeurCtrl.value;
+    const collectionId = this.collectionCtrl.value;
+    const genreId = this.genreCtrl.value;
+    const auteurId = this.auteurCtrl.value;
+    
+    this.editeurs$.subscribe(editeurs => {
+      const editeur = editeurs.find(e => e.id === editeurId);
+      const editeurDto = editeur ? new EditeurDto(editeur.id, editeur.nom, editeur.pays) : new EditeurDto(0, '', '');
+      
+      this.collections$.subscribe(collections => {
+        const collection = collections.find(c => c.id === collectionId);
+        const collectionDto = collection ? new CollectionDto(collection.id, collection.nom) : new CollectionDto(0, '');
+        
+        this.genres$.subscribe(genres => {
+          const genre = genres.find(g => g.id === genreId);
+          const genreDto = genre ? new GenreDto(genre.id, genre.libelle) : new GenreDto(0, '');
+          
+          this.auteurs$.subscribe(auteurs => {
+            const auteur = auteurs.find(a => a.id === auteurId);
+            const auteurDto = auteur ? new AuteurDto(auteur.id, auteur.nom, auteur.prenom, auteur.nationalite) : new AuteurDto(0, '', '', '');
+            
+            if (this.editingLivre) {
+              this.livreService.save(new LivreDto(
+                this.editingLivre.id, 
+                this.titreCtrl.value,
+                this.anneeCtrl.value, 
+                this.resumeCtrl.value, 
+                editeurDto,
+                collectionDto,
+                genreDto,
+                auteurDto
+              ));
+            } else {
+              this.livreService.save(new LivreDto(
+                0, 
+                this.titreCtrl.value,
+                this.anneeCtrl.value,  
+                this.resumeCtrl.value, 
+                editeurDto,
+                collectionDto,
+                genreDto,
+                auteurDto
+              ));
+            }
+            
+            this.editingLivre = null;
+            this.titreCtrl.setValue("");
+            this.resumeCtrl.setValue("");
+            this.anneeCtrl.setValue("");
+            this.auteurCtrl.setValue("");
+            this.genreCtrl.setValue("");
+            this.editeurCtrl.setValue("");
+            this.collectionCtrl.setValue("");
+          });
+        });
+      });
+    });
   }
 
   public trackLivre(index: number, value: LivreDto) {
@@ -98,11 +141,10 @@ export class LivrePage {
     this.titreCtrl.setValue(livre.titre);
     this.resumeCtrl.setValue(livre.resume);
     this.anneeCtrl.setValue(livre.annee);
-    this.auteurCtrl.setValue(livre.auteur);
-    this.genreCtrl.setValue(livre.genre);
-    this.editeurCtrl.setValue(livre.editeur);
-    this.collectionCtrl.setValue(livre.collection);
-
+    this.auteurCtrl.setValue(livre.auteur.id);
+    this.genreCtrl.setValue(livre.genre.id);
+    this.editeurCtrl.setValue(livre.editeur.id);
+    this.collectionCtrl.setValue(livre.collection.id);
+    
   }
-
 }

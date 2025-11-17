@@ -57,10 +57,11 @@ export class LivreService {
     const payload = livreDto.toJson();
 
     if (!livreDto.id) {
+      console.log("Creating new livre");
       this.http.post<LivreDto>(this.apiUrl, payload).subscribe(() => this.refresh());
       return;
     }
-
+    console.log("Updating existing livre");
     this.http.put<LivreDto>(`${this.apiUrl}/${livreDto.id}`, payload).subscribe(() => this.refresh());
   }
 
