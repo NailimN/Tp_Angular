@@ -25,17 +25,34 @@
             </tr>
         </tbody>
     </table>
-</div>
 
-<div>
-  <input type="text" [(ngModel)]="editeur.nom">
-  <input type="text" [(ngModel)]="editeur.pays">
+    <div class="ajout">
+        <form (ngSubmit)="ajouterModifierEditeur()" [formGroup]="editeurForm">
 
-  @if (editeur.id) {
-    <button (click)="modifierEditeur()">Modifier</button>
-  }
+            <div>
+                <input  type="text" formControlName="nom" placeholder="Nom obligatoire"/> 
+                
+                @if (nomCtrl.hasError('required')) {
+                    <div>Le nom est obligatoire</div>
+                }
+            </div>
 
-  @else {
-    <button (click)="ajouterEditeur()">Ajouter</button>
-  }
+            <div>
+                <input type="text" formControlName="pays" placeholder="Pays obligatoire"/>
+
+                @if (paysCtrl.hasError('required')) {
+                    <div>Le pays est obligatoire</div>
+                }
+            </div>
+
+            @if (editingEditeur) {
+                <input type="submit" [disabled]="editeurForm.invalid" value="Modifier" />
+            }
+
+            @else {
+                <input type="submit" [disabled]="editeurForm.invalid" value="Ajouter" />
+            }
+
+        </form>
+    </div>
 </div>
