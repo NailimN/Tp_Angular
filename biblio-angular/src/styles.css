@@ -2,7 +2,7 @@
 #backcolor {
 
     height: 100%;
-    background: radial-gradient( circle farthest-corner at 10% 20%,  rgb(10, 122, 60) 0%, rgb(7, 65, 66) 90% ) no-repeat fixed;
+    background: radial-gradient( circle farthest-corner at 10% 20%,  rgb(172, 231, 199) 0%, rgb(157, 230, 231) 90% ) no-repeat fixed;
 	font-family: "Elms Sans", sans-serif;
 	font-weight: 100;
 }
@@ -32,7 +32,7 @@ th,
 td {
 	padding: 15px;
 	background-color: rgba(255, 255, 255, 0.178);
-	color: #fff;
+	color: #072421;
 }
 
 th {
@@ -41,7 +41,7 @@ th {
 
 thead th {
 
-		background-color: rgb(5, 43, 44);
+		background-color: #4ab0a6;
 	
 }
 
@@ -122,7 +122,7 @@ border : 1.5px solid #c90808;
 
 h1, h3{
 
-color: #EBFCF5;
+color: #0a3f38;
 text-align: center;
 
 }
