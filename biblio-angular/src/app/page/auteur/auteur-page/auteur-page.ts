@@ -41,13 +41,26 @@ constructor(private auteurService: AuteurService,  private formBuilder: FormBuil
   }
 
     public ajoutermodifierAuteur() {
+
+       if (this.auteurForm.invalid) {
+    this.auteurForm.markAllAsTouched();  // pour afficher les erreurs
+    return;
+  }
       
        if (this.editingAuteur) {
-            this.auteurService.save(new AuteurDto(this.editingAuteur.id, this.nameCtrl.value,this.preCtrl.value,this.natCtrl.value ));
+            this.auteurService.save(new AuteurDto(
+              this.editingAuteur.id,
+              this.nameCtrl.value,
+              this.preCtrl.value,
+              this.natCtrl.value ));
           }
         
           else {
-            this.auteurService.save(new AuteurDto(0, this.nameCtrl.value,this.preCtrl.value ?? "",this.natCtrl.value ?? ""));
+            this.auteurService.save(new AuteurDto(
+              0,
+              this.nameCtrl.value,
+              this.preCtrl.value ?? "",
+              this.natCtrl.value ?? ""));
 
           }
       

@@ -1,0 +1,24 @@
+
+
+<div class="details" >
+
+@if (auteur) {
+    <h1>Auteur #{{ auteur.id }}</h1>
+    <div>
+       <b>Nom :</b>  {{ auteur.nom }}
+    </div>
+
+    <div>
+      <b>Prenom :</b>   {{ auteur.prenom }}
+    </div>
+
+        <div>
+      <b>Nationalite :</b>   {{ auteur.nationalite}}
+    </div>
+}
+
+@else {
+    <h1>Auteur inconnu</h1>
+}
+
+</div>

@@ -39,23 +39,27 @@
 <div class="ajout">
     <form (ngSubmit)="ajoutermodifierAuteur()" [formGroup]="auteurForm">
 
-<div>
+<div class="required">
+    <label>Nom *</label>
   <input  type="text" formControlName="nom" placeholder="Nom obligatoire"/> 
   
   @if (nameCtrl.hasError('required')) {
   <span></span>
             }
-        </div>
+</div>
 
+        <label>Prenom</label>
   <input type="text" formControlName="prenom" placeholder="Prenom">
+
+  <label>Nationalite</label>
   <input type="text" formControlName="nationalite"  placeholder="Nationalite">
 
   @if (editingAuteur) {
-    <button  class="btnmodif"  (click)="ajoutermodifierAuteur()">Modifier</button>
+    <button  class="btnmodif"  [disabled]="auteurForm.invalid"  (click)="ajoutermodifierAuteur()">Modifier</button>
   }
 
   @else {
-    <button class="btnmodif" (click)="ajoutermodifierAuteur()">Ajouter</button>
+    <button class="btnmodif"  [disabled]="auteurForm.invalid"  (click)="ajoutermodifierAuteur()">Ajouter</button>
   }
 
     </form>
