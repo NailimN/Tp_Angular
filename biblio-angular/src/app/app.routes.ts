@@ -9,6 +9,7 @@ import { EditeurPage } from './page/editeur/editeur-page/editeur-page';
 import { CollectionPage } from './page/collection/collection-page/collection-page';
 import { AuteurPage } from './page/auteur/auteur-page/auteur-page';
 import { EditeurDetailPage } from './page/editeur/editeur-detail-page/editeur-detail-page';
+import { AuteurDetail } from './page/auteur/auteur-detail/auteur-detail';
 
 export const routes: Routes = [
     {path: '', component: HomePage},
@@ -21,5 +22,5 @@ export const routes: Routes = [
     {path: 'editeur/:id', component: EditeurDetailPage, canActivate: [authGuard]},
     {path: 'collection', component: CollectionPage, canActivate: [authGuard]},
     {path: 'auteur', component: AuteurPage, canActivate: [authGuard]},
-    // {path: 'auteur/{:id}', component: AuteurPage, canActivate: [authGuard]}
+    {path: 'auteur/:id', component: AuteurDetail, canActivate: [authGuard]}
 ];
