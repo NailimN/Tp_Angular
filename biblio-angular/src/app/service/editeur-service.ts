@@ -37,9 +37,9 @@ export class EditeurService {
 
     if (!editeurDto.id) {
       this.http.post<EditeurDto>(this.apiUrl, payload).subscribe(() => this.refresh());
-    }
-
-    this.http.put<EditeurDto>(`${ this.apiUrl }/${ editeurDto.id }`, payload).subscribe(() => this.refresh());
+    } else {
+      this.http.put<EditeurDto>(`${ this.apiUrl }/${ editeurDto.id }`, payload).subscribe(() => this.refresh());
+    }  
   }
 
   public deleteById(id: number): void {
