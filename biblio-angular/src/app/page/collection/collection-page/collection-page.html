@@ -24,16 +24,27 @@
         </tr>
     </tbody>
 </table>
+
+<div class="ajout">
+        <form (ngSubmit)="ajouterModifierCollection()" [formGroup]="collectionForm">
+
+            <div>
+                <input  type="text" formControlName="nom" placeholder="Nom obligatoire"/> 
+                
+                @if (nomCtrl.hasError('required')) {
+                    <div>Le nom est obligatoire</div>
+                }
+            </div>
+
+            @if (editingCollection) {
+                <input type="submit" [disabled]="collectionForm.invalid" value="Modifier" />
+            }
+
+            @else {
+                <input type="submit" [disabled]="collectionForm.invalid" value="Ajouter" />
+            }
+
+        </form>
+    </div>
 </div>
 
-<div>
-  <input type="text" [(ngModel)]="collection.nom">
-
-  @if (collection.id) {
-    <button (click)="modifierCollection()">Modifier</button>
-  }
-
-  @else {
-    <button (click)="ajouterCollection()">Ajouter</button>
-  }
-</div>
