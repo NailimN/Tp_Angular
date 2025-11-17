@@ -1,5 +1,5 @@
 <p>livre-page works!</p>
-
+<div >
 <table>
     <thead>
         <tr>
@@ -38,12 +38,83 @@
                 <p>{{ livre.collection.nom }}</p>
             </td>
             <td>
-                <button (click)="updateById(livre.id)">Modifier</button>
-                <button (click)="deleteById(livre.id)">Supprimer</button>
+                <button (click)="update(livre)">Modifier</button>
+                <button (click)="delete(livre)">Supprimer</button>
             </td>
         </tr>
     </tbody>
 </table>
+</div>
+<br>
 
-<button [routerLink]="['/livre/add']">Ajouter une matière</button>
+<form (ngSubmit)="creerOuModifier()" [formGroup]="livreForm">
+    <div>
+        <label for="titre">Titre</label>
+        <input id="titre" type="text" formControlName="titre" />
+        
+        @if (titreCtrl.hasError('required')) {
+            <span>Obligatoire</span>
+        }
+    </div>
+    <div>
+        <label for="resume">Résumé</label>
+        <input id="resume" type="text" formControlName="resume" />
+        
+        @if (resumeCtrl.hasError('required')) {
+            <span>Obligatoire</span>
+        }
+    </div>
+    <div>
+        <label for="annee">Année de publication</label>
+        <input id="annee" type="text" formControlName="annee" />
+        
+        @if (anneeCtrl.hasError('required')) {
+            <span>Obligatoire</span>
+        }
+    </div>
+    <div>
+        <label for="auteur">Auteur</label>
+        <select id="auteur" formControlName="auteur">
+            <option *ngFor="let auteur of auteurs$ | async" [ngValue]="auteur">{{ auteur.nom }} {{ auteur.prenom }}</option>
+        </select>
+        @if (auteurCtrl.hasError('required')) {
+            <span>Obligatoire</span>
+        }
+    </div>  
+    <div>
+        <label for="genre">Genre</label>
+        <select id="genre" formControlName="genre">
+            <option *ngFor="let genre of genres$ | async" [ngValue]="genre">{{ genre.libelle }}</option>
+        </select>
+        @if (genreCtrl.hasError('required')) {
+            <span>Obligatoire</span>
+        }
+    </div>
+    <div>
+        <label for="editeur">Editeur</label>
+        <select id="editeur" formControlName="editeur">
+            <option *ngFor="let editeur of editeurs$ | async" [ngValue]="editeur">{{ editeur.nom }}</option>
+        </select>
+        @if (editeurCtrl.hasError('required')) {
+            <span>Obligatoire</span>
+        }
+    </div>
+    <div>
+        <label for="collection">Collection</label>
+        <select id="collection" formControlName="collection">
+            <option *ngFor="let collection of collections$ | async" [ngValue]="collection">{{ collection.nom }}</option>
+        </select>
+        @if (collectionCtrl.hasError('required')) {
+            <span>Obligatoire</span>
+        }
+    </div>
+
+    @if (editingLivre) {
+        <input type="submit" [disabled]="livreForm.invalid" value="Modifier" />
+    }
+
+    @else {
+        <input type="submit" [disabled]="livreForm.invalid" value="Créer" />
+    }
+</form>
 
