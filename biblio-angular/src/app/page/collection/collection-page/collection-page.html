@@ -9,16 +9,16 @@
     </thead>
 
     <tbody>
-        <tr *ngFor="let collection of collections$ | async; trackBy: trackCollection">
+        <tr *ngFor="let c of collections$ | async; trackBy: trackCollection">
             <td>
-                <a [routerLink]="[ '/collection', collection.id ]">
-                    {{ collection.nom }}
+                <a [routerLink]="[ '/collection', c.id ]">
+                    {{ c.nom }}
                 </a>
             </td>
 
             <td>
-                <button (click)="editCollection(collection)">Modifier</button>
-                <button (click)="deleteCollection(collection)">Supprimer</button>
+                <button (click)="editCollection(c)">Modifier</button>
+                <button (click)="deleteCollection(c)">Supprimer</button>
             </td>
         </tr>
     </tbody>
