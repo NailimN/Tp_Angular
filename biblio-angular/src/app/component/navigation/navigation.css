@@ -1,7 +1,7 @@
 /* Conteneur global */
 .app-navbar {
   width: 100%;
-  background: rgba(255,255,255,0.08);
+  background: rgba(18, 139, 119, 0.603);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid rgba(255,255,255,0.15);
   position: sticky;
@@ -21,7 +21,7 @@
 
 /* Logo */
 .nav-logo span {
-  color: #EBFCF5;
+  color: #ffffff;
   font-size: 1.3rem;
   font-weight: 300;
   letter-spacing: 0.5px;
