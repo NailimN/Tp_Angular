@@ -13,12 +13,12 @@ import { EditeurService } from '../../../service/editeur-service';
 export class EditeurDetailPage implements OnInit {
   protected editeur! : EditeurDto | null;
 
-  constructor(private route: ActivatedRoute, private title: Title, private editeurService: EditeurService) {  }
+  constructor(private route: ActivatedRoute, private title: Title, private editeurService: EditeurService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: any) => {
       this.editeurService.findById(params.id).subscribe(editeur => {
-        this.editeur = this.editeur;
+        this.editeur = editeur;
 
         if (this.editeur) {
           this.title.setTitle("Détail du Éditeur #" + this.editeur.id);
