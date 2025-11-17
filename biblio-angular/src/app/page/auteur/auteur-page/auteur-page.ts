@@ -29,8 +29,8 @@ constructor(private auteurService: AuteurService,  private formBuilder: FormBuil
     this.auteurs$ = this.auteurService.findAll();
 
     this.nameCtrl = new FormControl('', Validators.required);
-this.preCtrl = new FormControl();
-this.natCtrl = new FormControl();
+    this.preCtrl = new FormControl();
+    this.natCtrl = new FormControl();
 
     this.auteurForm = this.formBuilder.group({
      nom : this.nameCtrl,
@@ -53,8 +53,8 @@ this.natCtrl = new FormControl();
       
           this.editingAuteur = null;
           this.nameCtrl.reset();
-           this.preCtrl.reset();
-            this.natCtrl.reset();
+          this.preCtrl.reset();
+          this.natCtrl.reset();
 
         
     }
