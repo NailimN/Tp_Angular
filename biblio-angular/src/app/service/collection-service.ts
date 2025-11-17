@@ -7,7 +7,7 @@ import { CollectionDto } from '../dto/collection-dto';
   providedIn: 'root',
 })
 export class CollectionService {
-  private apiUrl: string = '/collection';
+  private apiUrl: string = '/collections';
   private refresh$: Subject<void> = new Subject<void>();
 
   constructor(private http: HttpClient) { }
@@ -38,10 +38,10 @@ export class CollectionService {
     if (!collectionDto.id) {
       this.http.post<CollectionDto>(this.apiUrl, payload).subscribe(() => this.refresh());
     }
-
+    else{
     this.http.put<CollectionDto>(`${ this.apiUrl }/${ collectionDto.id }`, payload).subscribe(() => this.refresh());
   }
-
+  }
   public deleteById(id: number): void {
     this.http.delete<void>(`${ this.apiUrl }/${ id }`).subscribe(() => this.refresh());
   }
