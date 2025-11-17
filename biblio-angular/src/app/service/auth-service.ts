@@ -38,5 +38,33 @@ export class AuthService {
       });
     })
   }
+
+    isAuthenticated(): boolean {
+    const token = this.token;
+    if (!token) return false;
+
+    return !this.isJwtExpired(token);
+  }
+
+  isJwtExpired(token: string): boolean {
+    try {
+      const payload = token.split('.')[1];
+      const decoded = JSON.parse(this.base64UrlDecode(payload));
+      const exp = decoded.exp;
+      if (!exp) return true;
+
+      const now = Math.floor(Date.now() / 1000);
+      return exp < now;
+    } catch {
+      return true;
+    }
+  }
+
+  base64UrlDecode(str: string): string {
+    str = str.replace(/-/g, '+').replace(/_/g, '/');
+    const pad = str.length % 4;
+    if (pad) str += '='.repeat(4 - pad);
+    return atob(str);
+  }
 }
 
