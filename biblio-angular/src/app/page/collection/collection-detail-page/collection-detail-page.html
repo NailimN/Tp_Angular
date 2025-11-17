@@ -1,1 +1,10 @@
-<p>collection-detail-page works!</p>
+@if (collection) {
+    <h1>Collection #{{ collection.id }}</h1>
+    <div>
+        {{ collection.nom }}
+    </div>
+}
+
+@else {
+    <h1>Collection inconnu</h1>
+}
