@@ -33,7 +33,7 @@
                 <input  type="text" formControlName="nom" placeholder="Nom obligatoire"/> 
                 
                 @if (nomCtrl.hasError('required')) {
-                    <div>Le nom est obligatoire</div>
+                    <div class="error-message">Le nom est obligatoire</div>
                 }
             </div>
 
@@ -41,7 +41,7 @@
                 <input type="text" formControlName="pays" placeholder="Pays obligatoire"/>
 
                 @if (paysCtrl.hasError('required')) {
-                    <div>Le pays est obligatoire</div>
+                    <div class="error-message">Le pays est obligatoire</div>
                 }
             </div>
 
