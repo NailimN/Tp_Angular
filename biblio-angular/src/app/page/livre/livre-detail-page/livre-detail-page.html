@@ -1,1 +1,42 @@
-<p>livre-detail-page works!</p>
+<h1>Livre #{{ livre.id }}</h1>
+<div id="grille">
+    <table>
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Resumé</th>
+                <th>Année de publication</th>
+                <th>Auteur</th>
+                <th>Genre</th>
+                <th>Editeur</th>
+                <th>Collection</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>
+                    <p>{{ livre.titre }}</p>
+                </td>
+                <td>
+                    <p>{{ livre.resume }}</p>
+                </td>
+                <td>
+                    <p>{{ livre.annee }}</p>
+                </td>
+                <td>
+                    <p>{{ livre.auteur.nom }} {{ livre.auteur.prenom }}</p>
+                </td>
+                <td>
+                    <p>{{ livre.genre.libelle }}</p>
+                </td>
+                <td>
+                    <p>{{ livre.editeur.nom }}</p>
+                </td>
+                <td>
+                    <p>{{ livre.collection.nom }}</p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
