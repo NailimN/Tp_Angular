@@ -8,10 +8,12 @@ export const authGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);
 
   if (authService.token) {
+    console.log("AuthGuard: utilisateur authentifié");
      // Ici, si on a un token, c'est qu'on est connecté
      return true;
   }
 
    // Navigation à utiliser dans les guard
-  return router.createUrlTree([ '/login' ]);
+  router.createUrlTree([ '/login' ]);
+  return false;
 };
