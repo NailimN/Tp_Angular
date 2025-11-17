@@ -40,16 +40,40 @@
   <td>{{ auteur.nationalite }}</td>
 
   <td>
-    <button>Modifier</button>
-    <button>Supprimer</button>
+    <button (click)="editAuteur(auteur)" >Modifier</button>
+    <button (click)="deleteAuteur(auteur)" >Supprimer</button>
   </td>
 </tr>
 
 </tbody>
 
 
+
 </table>
+
+<div class="ajout">
+
+
+  <input type="text" [(ngModel)]="auteur.nom">
+  <input type="text" [(ngModel)]="auteur.prenom">
+  <input type="text" [(ngModel)]="auteur.nationalite">
+
+  @if (auteur.id) {
+    <button class="btnmodif" (click)="modifierAuteur()">Modifier</button>
+  }
+
+  @else {
+    <button class="btnmodif" (click)="ajouterAuteur()">Ajouter</button>
+  }
+
+
 </div>
+
+
+
+</div>
+
+
 
 </body>
 </html>
