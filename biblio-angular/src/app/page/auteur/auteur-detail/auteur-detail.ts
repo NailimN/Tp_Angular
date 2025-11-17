@@ -11,27 +11,26 @@ import { AuteurService } from '../../../service/auteur-service';
   templateUrl: './auteur-detail.html',
   styleUrl: './auteur-detail.css',
 })
-export class AuteurDetail implements OnInit{
+export class AuteurDetail implements OnInit {
+  protected auteur!: AuteurDto | null;
 
- protected auteur! : AuteurDto | null;
-
-  constructor(private route: ActivatedRoute, private title: Title, private auteurService: AuteurService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private title: Title,
+    private auteurService: AuteurService
+  ) {}
 
   ngOnInit(): void {
     this.route.params.subscribe((params: any) => {
-      this.auteurService.findById(params.id).subscribe(auteur => {
+      this.auteurService.findById(params.id).subscribe((auteur) => {
         this.auteur = auteur;
 
-
-           if (this.auteur) {
+        if (this.auteur) {
           this.title.setTitle("Détail de l'Auteur #" + this.auteur.id);
+        } else {
+          this.title.setTitle('Auteur inconnu');
         }
-
-        else {
-          this.title.setTitle("Auteur inconnu");
-        }
-
-     });
+      });
     });
   }
 }
