@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-collection-page',
   imports: [
     CommonModule,
-    RouterLink
+    RouterLink,
     FormsModule
   ],
   templateUrl: './collection-page.html',
