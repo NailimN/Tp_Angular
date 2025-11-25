@@ -1,5 +1,7 @@
 package biblio_boot.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -20,9 +22,13 @@ import java.util.List;
 @Configuration
 @EnableMethodSecurity(prePostEnabled = true)
 public class SecurityConfig {
+        private final static Logger log = LoggerFactory.getLogger(SecurityConfig.class);
+
 
     @Bean
     SecurityFilterChain filterChain(HttpSecurity http, JwtHeaderFilter jwtHeaderFilter) throws Exception{
+         log.error("Configuration {} du filter chain {}", "var1", "var2");
+
 
         http.authorizeHttpRequests(auth ->{
 
