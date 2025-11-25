@@ -16,6 +16,6 @@ WORKDIR /app
 
 COPY --from=builder /app/target/*.war biblio-boot.war
 
-CMD [ "java", "-jar", "bilbio-boot.war" ]
+CMD [ "java", "-jar", "biblio-boot.war" ]
 
 EXPOSE 8080
