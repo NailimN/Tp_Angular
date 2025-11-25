@@ -1,9 +1,22 @@
+FROM node:lts-bullseye AS builder
+
+WORKDIR /app
+
+COPY package.json .
+
+RUN npm install
+
+COPY . .
+
+RUN ./node_modules/.bin/ng build
+
+
 FROM nginx:latest
 
 # On copie la configuration NGINX
 COPY nginx-default.conf /etc/nginx/conf.d/default.conf
 
-COPY ./dist/biblio-angular/browser /usr/share/nginx/html
+COPY --from=builder /app/dist/biblio-angular/browser /usr/share/nginx/html
 
 # Au démarrage du container, cette commande sera exécutée - elle pourra être remplacée par autre chose car CMD est utilisé (au lieu de ENTRYPOINT)
 CMD [ "nginx", "-g", "daemon off;" ]
