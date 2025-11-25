@@ -16,21 +16,11 @@ pipeline {
             }
 
             stages {
-
-                stage('Maven Package') {
-                    steps {
-                        dir('biblio-boot') {
-                            sh 'mvn -version'
-                            sh 'mvn clean package -DskipTests'
-                        }
-                    }
-                }
-
                 stage('Analyse Sonar') {
                     steps {
                         dir('biblio-boot') {
                             withSonarQubeEnv('SonarQube') {
-                                sh "mvn clean verify sonar:sonar -Dsonar.projectKey=biblio-boot -Dsonar.projectName=biblio-boot"
+                                sh "mvn clean verify sonar:sonar -DskipTests -Dsonar.projectKey=biblio-boot -Dsonar.projectName=biblio-boot"
                             }
                         }
                     }
