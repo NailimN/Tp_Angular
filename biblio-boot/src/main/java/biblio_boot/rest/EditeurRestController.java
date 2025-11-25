@@ -2,6 +2,8 @@ package biblio_boot.rest;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +22,8 @@ import biblio_boot.service.EditeurService;
 @RequestMapping("/api/editeur")
 @CrossOrigin("*")
 public class EditeurRestController {
+
+	private static final Logger log = LoggerFactory.getLogger(EditeurRestController.class);
 	
 	@Autowired
 	EditeurService editeurSrv;
@@ -28,12 +32,14 @@ public class EditeurRestController {
 	@GetMapping
 	public List<Editeur> allEditeurs()
 	{
+		log.info("GET /api/editeur - allEditeurs() called");
 		return editeurSrv.getAll();
 	}
 
 
 	@GetMapping("/{id}")
 	public Editeur ficheEditeur(@PathVariable Integer id, Editeur editeur) {
+		log.info("GET /api/editeur/{} - ficheEditeur() called", id);
 		return editeurSrv.getById(id);
 	}
 
@@ -41,6 +47,7 @@ public class EditeurRestController {
 	@PostMapping
 	public Editeur ajoutEditeur(@RequestBody Editeur editeur)
 	{
+		log.info("POST /api/editeur - ajoutEditeur() called");
 		return editeurSrv.create(editeur);
 	}
 
@@ -48,6 +55,7 @@ public class EditeurRestController {
 	@PutMapping("/{id}")
 	public Editeur modifierEditeur(@PathVariable Integer id,@RequestBody Editeur editeur)
 	{
+		log.info("PUT /api/editeur/{} - modifierEditeur() called", id);
 		editeur.setId(id);
 		return (Editeur) editeurSrv.update(editeur);
 	}
@@ -55,6 +63,7 @@ public class EditeurRestController {
 
 	@DeleteMapping("/{id}")
 	public void supprimerEditeur(@PathVariable Integer id) {
+		log.info("DELETE /api/editeur/{} - supprimerEditeur() called", id);
 		editeurSrv.deleteById(id);
 	}
 }
