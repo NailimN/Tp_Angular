@@ -1,9 +1,9 @@
-name: quest-compose
+name: biblio-compose
 
 services:
   mysql:
     image: mysql:8.0.44-debian
-    container_name: quest-mysql
+    container_name: biblio-mysql
     environment:
       MYSQL_ROOT_PASSWORD: root
 
@@ -14,10 +14,10 @@ services:
 
     volumes:
       - db_data:/var/lib/mysql
-      - ./quest-init.sql:/docker-entrypoint-initdb.d/setup.sql
+      - ./biblio-init.sql:/docker-entrypoint-initdb.d/setup.sql
 
     networks:
-      - quest
+      - biblio
 
 
   boot:
@@ -25,11 +25,11 @@ services:
       # context: /workspace/SOPRA-250905-GIT/quest-boot
       # context: ./quest-boot
 
-    image: ajc/quest:boot
-    container_name: quest-boot
+    image: ajc/biblio:boot
+    container_name: biblio-boot
 
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://quest-mysql/projet_quest
+      SPRING_DATASOURCE_URL: jdbc:mysql://biblio-mysql/biblio
       SPRING_DATASOURCE_PASSWORD: root
 
     depends_on:
@@ -37,12 +37,12 @@ services:
         condition: service_healthy
 
     networks:
-      - quest
+      - biblio
 
 
   angular:
-    image: ajc/quest:angular
-    container_name: quest-angular
+    image: ajc/biblio:angular
+    container_name: biblio-angular
 
     ports:
       - 80:80
@@ -51,12 +51,12 @@ services:
       - boot
 
     networks:
-      - quest
+      - biblio
 
 volumes:
   db_data:
-    name: quest-db-data
+    name: biblio-db-data
 
 networks:
   quest:
-    name: quest
+    name: biblio
