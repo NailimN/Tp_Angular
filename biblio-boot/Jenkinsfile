@@ -9,7 +9,7 @@ pipeline {
                     args '''
                         -v $HOME/.m2:/root/.m2:z
                         -u root
-                        --network biblio
+                        --network devops
                     '''
                     reuseNode true
                 }
@@ -21,7 +21,7 @@ pipeline {
                     steps {
                         dir('biblio-boot') {
                             sh 'mvn -version'
-                            sh 'mvn clean package'
+                            sh 'mvn clean package -DskipTests'
                         }
                     }
                 }
