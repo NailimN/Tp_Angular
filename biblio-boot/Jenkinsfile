@@ -49,7 +49,7 @@ pipeline {
 
         stage('Docker Deploy') {
             steps {
-                dir('DOCKER/commandes/compose/biblio') {
+                dir('./') {
                     sh 'docker compose up -d'
                 }
             }
