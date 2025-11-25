@@ -55,7 +55,7 @@ pipeline {
         stage('Docker Deploy') {
             steps {
                 dir('./') {
-                    sh 'docker compose up -d --build angular'
+                    sh 'docker compose up -d --no-deps --build angular'
                 }
             }
         }
