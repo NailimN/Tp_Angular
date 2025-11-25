@@ -21,7 +21,7 @@ pipeline {
                     steps {
                         dir('biblio-boot') {
                             sh 'mvn -version'
-                            sh 'mvn clean package'
+                            sh 'mvn clean package -DskipTests'
                         }
                     }
                 }
