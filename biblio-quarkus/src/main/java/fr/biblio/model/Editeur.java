@@ -1,7 +1,6 @@
-package main.java.fr.biblio.model;
-
+package fr.biblio.model;
 import jakarta.persistence.*;
 
-public class Utilisateur {
+public class Editeur {
     
 }

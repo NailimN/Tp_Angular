@@ -1,5 +1,4 @@
-package main.java.fr.biblio.model;
-
+package fr.biblio.model;
 import jakarta.persistence.*;
 
 @Entity
