@@ -1,6 +1,7 @@
 package fr.biblio.dto.response;
 
-
+import fr.biblio.model.Auteur;
+import fr.biblio.model.Editeur;
 
 public class AuteurResponse {
     
@@ -41,5 +42,17 @@ public class AuteurResponse {
     public void setId(Integer id) {
         this.id = id;
     } 
+
+	public static AuteurResponse convert(Auteur auteur) {
+        AuteurResponse resp = new AuteurResponse();
+
+        resp.setId(auteur.getId());
+        resp.setNom(auteur.getNom());
+        resp.setPrenom(auteur.getPrenom());
+		resp.setNationalite(auteur.getNationalite());
+
+        return resp;
+    }
+
 
 }

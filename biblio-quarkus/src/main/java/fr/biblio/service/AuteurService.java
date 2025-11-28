@@ -1,5 +1,6 @@
 package fr.biblio.service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -24,10 +25,10 @@ private final AuteurRepository repository;
         this.repository = repository;
     }
 
-    public Stream<Auteur> findAll() {
+    public List<Auteur> findAll() {
         log.debug("Trombinoscope sans photos des Auteurs");
 
-        return this.repository.findAll().stream();
+        return this.repository.findAll().list();
 
     }
 
