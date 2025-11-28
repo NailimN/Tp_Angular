@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 
 import fr.biblio.model.Livre;
 import fr.biblio.service.LivreService;
+import io.quarkus.security.Authenticated;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -15,6 +16,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 
 @Path("/livre")
+@Authenticated
 public class LivreRessource {
     private final static Logger log = LoggerFactory.getLogger(LivreRessource.class);
 
