@@ -12,8 +12,6 @@ import fr.biblio.dto.response.EditeurResponse;
 import fr.biblio.model.Editeur;
 import fr.biblio.service.EditeurService;
 import io.quarkus.security.Authenticated;
-import jakarta.annotation.security.PermitAll;
-import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.DELETE;
@@ -34,7 +32,6 @@ public class EditeurResource {
     private EditeurService service;
 
     @GET
-    @PermitAll
     public List<EditeurResponse> findAll() {
         log.debug("Recherche de la liste des editeurs");
 
@@ -46,7 +43,6 @@ public class EditeurResource {
 
     @Path("/{id}")
     @GET
-    @RolesAllowed({ "admin", "user" })
     public Response findById(@PathParam("id") int id) {
         log.debug("Recherche du editeur {}", id);
 
@@ -60,7 +56,6 @@ public class EditeurResource {
     }
 
     @POST
-    @RolesAllowed("admin")
     public Response create(@Valid CreateOrUpdateEditeurRequest request) {
         log.debug("Le nom du editeur est : {}", request.getNom());
         log.debug("Le pays du editeur est : {}", request.getPays());
@@ -75,7 +70,6 @@ public class EditeurResource {
 
     @Path("/{id}")
     @PUT
-    @RolesAllowed("admin")
     public Response update(@PathParam("id") int id, CreateOrUpdateEditeurRequest request) {
         log.debug("Le nom du editeur est : {}", request.getNom());
         log.debug("Le pays du editeur est : {}", request.getPays());
@@ -87,7 +81,6 @@ public class EditeurResource {
 
     @Path("/{id}")
     @DELETE
-    @RolesAllowed("admin")
     public Response deleteById(@PathParam("id") int id) {
         log.debug("Suppression du editeur {}", id);
 
