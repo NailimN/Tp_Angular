@@ -11,6 +11,7 @@ import fr.biblio.dto.request.CreateOrUpdateEditeurRequest;
 import fr.biblio.dto.response.EditeurResponse;
 import fr.biblio.model.Editeur;
 import fr.biblio.service.EditeurService;
+import io.quarkus.security.Authenticated;
 import jakarta.annotation.security.PermitAll;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
@@ -24,6 +25,8 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 
+@Path("/editeur")
+@Authenticated
 public class EditeurResource {
     private final static Logger log = LoggerFactory.getLogger(EditeurResource.class);
 
