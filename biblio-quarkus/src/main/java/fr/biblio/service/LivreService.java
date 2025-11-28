@@ -7,8 +7,10 @@ import org.slf4j.LoggerFactory;
 
 import fr.biblio.model.Livre;
 import fr.biblio.repo.LivreRepository;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.transaction.Transactional;
 
+@ApplicationScoped
 public class LivreService {
 
     private final static Logger log = LoggerFactory.getLogger(LivreService.class);
