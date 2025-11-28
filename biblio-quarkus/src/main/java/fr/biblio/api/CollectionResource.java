@@ -68,6 +68,5 @@ public class CollectionResource {
     @Path("/{id}")
     public void delete(@PathParam("id") int id) {
         log.debug("Supprimer collection {}", id);
-        service.deleteById(id);
     }
 }

@@ -63,17 +63,11 @@ public class CollectionService {
     }
 
     @Transactional
-    public boolean deleteById(int id) {
+    public void deleteById(int id) {
         log.debug("Suppression de la collection {}", id);
 
-        try {
-            this.repository.deleteById(id);
-            return true;
-        }
-
-        catch (Exception ex) {
-            log.error("Impossible de supprimer la collection {} : {}", id, ex.getMessage());
-            return false;
-        }
+        this.repository.deleteById(id);
     }
+
+    
 }
