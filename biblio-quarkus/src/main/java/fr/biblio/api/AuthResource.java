@@ -33,7 +33,7 @@ public class AuthResource {
 
         SecurityIdentity identity = this.jpaIdentityProvider.authenticate(this.entityManager, authenticationRequest);
 
-        String jwt = Jwt.issuer("quest-quarkus-issuer")
+        String jwt = Jwt.issuer("biblio-quarkus-issuer")
             .upn(request.username()) // User Principal Name
             .groups(identity.getRoles()) // Le ou les rôles
             .sign() // On signe le jeton avec la clé privée
