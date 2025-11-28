@@ -1,7 +1,9 @@
 package fr.biblio.model;
+
 import org.hibernate.annotations.UuidGenerator;
 
 import io.quarkus.security.jpa.Password;
+import io.quarkus.security.jpa.Roles;
 import io.quarkus.security.jpa.UserDefinition;
 import io.quarkus.security.jpa.Username;
 import jakarta.persistence.Entity;
@@ -20,6 +22,7 @@ public class Utilisateur {
     @Password
     private String password;
 
+    private boolean admin;
 
     public String getId() {
         return id;
@@ -43,5 +46,18 @@ public class Utilisateur {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
+    @Roles
+    public String getRole() {
+        return (this.admin) ? "admin" : "user";
     }
 }
