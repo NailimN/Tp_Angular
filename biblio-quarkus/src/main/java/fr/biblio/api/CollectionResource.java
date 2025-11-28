@@ -10,6 +10,7 @@ import fr.biblio.dto.request.CreateOrUpdateCollectionRequest;
 import fr.biblio.dto.response.CollectionResponse;
 import fr.biblio.model.Collection;
 import fr.biblio.service.CollectionService;
+import jakarta.validation.Valid;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -65,8 +66,8 @@ public class CollectionResource {
 
     @DELETE
     @Path("/{id}")
-    public boolean delete(@PathParam("id") int id) {
+    public void delete(@PathParam("id") int id) {
         log.debug("Supprimer collection {}", id);
-        return service.deleteById(id);
+        service.deleteById(id);
     }
 }
