@@ -21,7 +21,7 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 
-@Path("/collection")
+@Path("/collections")
 @Authenticated
 public class CollectionResource {
 
