@@ -22,8 +22,6 @@ public class Utilisateur {
     @Password
     private String password;
 
-    private boolean admin;
-
     public String getId() {
         return id;
     }
@@ -46,18 +44,5 @@ public class Utilisateur {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public boolean isAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(boolean admin) {
-        this.admin = admin;
-    }
-
-    @Roles
-    public String getRole() {
-        return (this.admin) ? "admin" : "user";
     }
 }
