@@ -2,19 +2,21 @@ name: biblio-compose
 
 services:
   mysql:
-    image: mysql:8.0.44-debian
-    container_name: biblio-mysql
+    image: postgres:16
+    container_name: biblio-postgres
     environment:
-      MYSQL_DATABASE: biblio
-      MYSQL_ROOT_PASSWORD: root
+      POSTGRES_DB: biblio
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
 
     healthcheck:
-      test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
-      timeout: 10s
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
       retries: 10
 
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data:/var/lib/postgresql/data
       - ./biblio-init.sql:/docker-entrypoint-initdb.d/setup.sql
 
     networks:
@@ -26,15 +28,16 @@ services:
       # context: /workspace/SOPRA-250905-GIT/quest-boot
       # context: ./quest-boot
 
-    image: ajc/biblio:boot
-    container_name: biblio-boot
+    image: ajc/biblio:quarkus
+    container_name: biblio-quarkus
 
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://biblio-mysql/biblio
-      SPRING_DATASOURCE_PASSWORD: root
+      QUARKUS_DATASOURCE_JDBC_URL: jdbc:postgresql://biblio-postgres:5432/biblio
+      QUARKUS_DATASOURCE_USERNAME: postgres
+      QUARKUS_DATASOURCE_PASSWORD: root
 
     depends_on:
-      mysql:
+      postgres:
         condition: service_healthy
 
     networks:
