@@ -9,9 +9,11 @@ import io.quarkus.security.jpa.Username;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+
 @Entity
 @UserDefinition
 public class Utilisateur {
+
     @Id
     @UuidGenerator
     private String id;
@@ -21,6 +23,9 @@ public class Utilisateur {
 
     @Password
     private String password;
+
+    @Roles
+    private String role; // <--- OBLIGATOIRE
 
     public String getId() {
         return id;
@@ -44,5 +49,13 @@ public class Utilisateur {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
