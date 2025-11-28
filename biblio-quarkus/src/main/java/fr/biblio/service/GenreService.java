@@ -1,10 +1,12 @@
 package fr.biblio.service;
 
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import fr.biblio.dto.request.CreateOrUpdateGenreRequest;
 import fr.biblio.model.Genre;
 import fr.biblio.repo.GenreRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -18,47 +20,51 @@ public class GenreService {
  
     private final GenreRepository repository;
 
-    public Stream<Genre> findALl(){
+    public GenreService(GenreRepository repository) {
+        this.repository = repository;
+    }
+
+    public Stream<Genre> findAll(){
         log.debug("Liste des genres");
 
         return this.repository.findAll().stream(); 
     }
 
     public Optional<Genre> findById(int id) {
-        log.debug("Récupération de la matière {}", id);
+        log.debug("Récupération du genre {}", id);
 
         return this.repository.findByIdOptional(id);
     }
 
     @Transactional
-    public Matiere create(CreateOrUpdateMatiereRequest request) {
-        log.debug("Création de la matière {}", request.getLibelle());
+    public Genre create(CreateOrUpdateGenreRequest request) {
+        log.debug("Création du genre {}", request.getLibelle());
 
-        Matiere matiere = new Matiere();
+        Genre genre = new Genre();
 
-        matiere.setLibelle(request.getLibelle());
+        genre.setLibelle(request.getLibelle());
 
-        this.repository.persist(matiere);
+        this.repository.persist(genre);
 
-        return matiere;
+        return genre;
     }
 
     @Transactional
-    public Matiere update(int id, CreateOrUpdateMatiereRequest request) {
-        log.debug("Mise à jour de la matière {}", id);
+    public Genre update(int id, CreateOrUpdateGenreRequest request) {
+        log.debug("Mise à jour du genre {}", id);
 
-        Matiere matiere = this.repository.findByIdOptional(id).orElseThrow(NotFoundException::new);
+        Genre genre = this.repository.findByIdOptional(id).orElseThrow(NotFoundException::new);
 
-        matiere.setLibelle(request.getLibelle());
+        genre.setLibelle(request.getLibelle());
 
-        this.repository.persist(matiere);
+        this.repository.persist(genre);
 
-        return matiere;
+        return genre;
     }
 
     @Transactional
     public boolean deleteById(int id) {
-        log.debug("Suppression de la matière {}", id);
+        log.debug("Suppression du genre {}", id);
 
         try {
             this.repository.deleteById(id);
@@ -66,7 +72,7 @@ public class GenreService {
         }
 
         catch (Exception ex) {
-            log.error("Impossible de supprimer la matière {} : {}", id, ex.getMessage());
+            log.error("Impossible de supprimer le genre {} : {}", id, ex.getMessage());
             return false;
         }
     }
