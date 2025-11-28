@@ -12,6 +12,7 @@ import fr.biblio.dto.request.CreateOrUpdateAuteurRequest;
 import fr.biblio.dto.response.AuteurResponse;
 import fr.biblio.model.Auteur;
 import fr.biblio.service.AuteurService;
+import io.quarkus.security.Authenticated;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -25,6 +26,8 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 
+@Path("/auteur")
+@Authenticated
 public class AuteurResource {
     private final static Logger log = LoggerFactory.getLogger(AuteurService.class);
 
