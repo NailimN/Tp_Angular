@@ -10,6 +10,7 @@ import fr.biblio.dto.request.CreateOrUpdateCollectionRequest;
 import fr.biblio.dto.response.CollectionResponse;
 import fr.biblio.model.Collection;
 import fr.biblio.service.CollectionService;
+import io.quarkus.security.Authenticated;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
@@ -21,6 +22,7 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 
 @Path("/collection")
+@Authenticated
 public class CollectionResource {
 
     private static final Logger log = LoggerFactory.getLogger(CollectionResource.class);

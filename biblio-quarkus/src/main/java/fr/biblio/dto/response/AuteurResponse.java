@@ -1,7 +1,6 @@
 package fr.biblio.dto.response;
 
 import fr.biblio.model.Auteur;
-import fr.biblio.model.Editeur;
 
 public class AuteurResponse {
     
