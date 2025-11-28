@@ -13,12 +13,12 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 
 @Path("/auth")
-public class AuthRessource {
+public class AuthResource {
 
     private final JpaIdentityProvider jpaIdentityProvider;
     private final EntityManager entityManager;
 
-    public AuthRessource(JpaIdentityProvider jpaIdentityProvider, EntityManager entityManager) {
+    public AuthResource(JpaIdentityProvider jpaIdentityProvider, EntityManager entityManager) {
         this.jpaIdentityProvider = jpaIdentityProvider;
         this.entityManager = entityManager;
     }
