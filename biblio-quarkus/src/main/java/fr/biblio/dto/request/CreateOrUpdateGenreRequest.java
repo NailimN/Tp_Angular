@@ -2,7 +2,7 @@ package fr.biblio.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 
-public class CreateOrUpdateGenre {
+public class CreateOrUpdateGenreRequest {
 
     @NotBlank
     private String libelle;
